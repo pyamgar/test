@@ -1,0 +1,38 @@
+install terraform 
+https://askubuntu.com/questions/983351/how-to-install-terraform-in-ubuntu
+
+sudo apt-get update
+--go for latest version
+wget https://releases.hashicorp.com/terraform/0.12.18/terraform_0.12.18_linux_amd64.zip
+unzip terraform_0.12.18_linux_amd64.zip
+sudo mv terraform /usr/local/bin/
+terraform --version 
+terraform init
+
+-------------ec2.tf--------
+provider "aws" {
+  access_key = "Access_Key"
+  secret_key = "SECRET_KEY_HERE"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+
+
+
+
+---------------------
+provider "aws" {
+  access_key = "Access_Key"
+  secret_key = "SECRET_KEY_HERE"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "exampleDemo" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
