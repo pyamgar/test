@@ -1,0 +1,31 @@
+ubuntu
+m8bn64rd
+
+git config --global user.username "pyamgar"
+
+
+--Jeenkins
+172.31.7.252:8080
+wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
+
+
+--install JDK
+sudo apt-get install openjdk-8-jdk
+
+--Git notes
+git init
+
+git remote add origin "URL"
+
+git pull
+
+OR git clone
+git add
+git commit
+
+git branch branch1
+git checkout branch1 --to switch branch
+--branches is not synched every branch has seprate file strcture
+
+git merge branch1 --merge the branch1 to cuurent branchh
+

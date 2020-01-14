@@ -1,0 +1,42 @@
+pipeline{
+    agent any
+    stages{
+        stage('Checkout'){
+           steps {
+                   sh 'rm -rf gol'
+                   sh 'git clone https://github.com/pyamgar/gol.git'
+                 }
+           }
+      stage('compile') {
+           steps {
+                  dir("/var/lib/jenkins/workspace/declarativeDemo/gol"){
+                      sh 'mvn compile'
+                   }
+            }
+      }
+	  stage('Sonar Analysis'){
+	  steps{
+	       dir("/var/lib/jenkins/workspace/declarativeDemo/gol"){
+                    
+            withSonarQubeEnv('sonar'){
+                    sh 'mvn sonar:sonar'
+                }
+			}
+	    }
+      }
+	  stage('clean and package ') {
+           steps {
+                  dir("/var/lib/jenkins/workspace/declarativeDemo/gol"){
+                      sh 'mvn clean install'
+                   }
+            }
+      }
+    }
+     post
+         {
+          always{
+                      echo "Build successfully"
+                }
+        }
+
+}
